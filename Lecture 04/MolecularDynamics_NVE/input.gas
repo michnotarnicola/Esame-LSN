@@ -1,0 +1,19 @@
+1.2
+108
+0.05
+5
+0.0005
+2000
+750
+20
+1
+
+  ReadInput >> temp;
+  ReadInput >> npart;
+  ReadInput >> rho;
+  ReadInput >> rcut;
+  ReadInput >> delta;
+  ReadInput >> nstep;
+  ReadInput >> iprint;
+  ReadInput >> nblk;
+  ReadInput >> oldconf;

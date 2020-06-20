@@ -1,0 +1,47 @@
+SGD :
+
+Test loss: 0.0768543928861618
+Test accuracy: 0.9750999808311462
+
+Prediction : 10/10
+-------------------------------------------------
+ADAGRAD:
+
+Test loss: 0.20334061980247498
+Test accuracy: 0.9412999749183655
+
+Prediction : 9/10 (5->6)
+-------------------------------------------------
+ADADELTA:
+
+Test loss: 0.547890841960907
+Test accuracy: 0.8845999836921692
+
+Prediction : 9/10 (5->4)
+-------------------------------------------------
+
+digit_filename = "./Pictures/1.png"
+digit_in = Image.open(digit_filename).convert('L')
+
+ydim, xdim = digit_in.size
+print("Image size: "+str(xdim)+"x"+str(ydim))
+pix=digit_in.load();
+data = np.zeros((xdim, ydim))
+for j in range(ydim):
+    for i in range(xdim):
+        data[i,j]=pix[j,i]
+
+data /= 255
+
+print('Original data shape: ',data.shape)
+data = data.reshape(1,xdim, ydim, 1) #reshape the picture to conform to the input of CNN
+print('New data shape: ',data.shape)
+
+pred_0 = model_CNN.predict(data) #predict the digit and then reshape back the picture
+data = data.reshape(xdim,ydim)
+
+plt.figure(figsize=(5, 5))  
+plt.imshow(data, cmap='gray')    
+plt.title("Digit predicted:    {}".format(np.argmax(pred_0)))
+plt.axis('off') 
+plt.show()
